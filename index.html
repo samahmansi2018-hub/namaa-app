@@ -33,73 +33,136 @@
         </div>
       </div>
       <div class="flex items-center gap-2">
+        <!-- Points Counter -->
+        <div class="flex items-center gap-1 bg-amber-500/10 text-amber-600 dark:text-amber-400 px-3 py-1.5 rounded-xl border border-amber-500/20 text-xs font-bold">
+          <span>⭐</span>
+          <span id="userPoints">0</span>
+          <span class="text-[10px]">نقطة</span>
+        </div>
         <button id="themeToggle" class="p-2 rounded-xl bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300">🌙</button>
-        <button class="px-4 py-2 bg-brand-600 text-white font-bold text-xs rounded-xl shadow-md">تسجيل الدخول</button>
       </div>
     </div>
   </header>
 
   <!-- Hero Section -->
-  <section class="px-4 py-10 text-center max-w-3xl mx-auto">
-    <div class="inline-block px-3 py-1 rounded-full bg-brand-50 dark:bg-brand-500/10 text-brand-600 dark:text-brand-400 text-xs font-semibold mb-4 border border-brand-200 dark:border-brand-500/20">
-      ✨ منصة مجانية بالكامل للشباب والطلاب
+  <section class="px-4 py-8 text-center max-w-3xl mx-auto">
+    <div class="inline-block px-3 py-1 rounded-full bg-brand-50 dark:bg-brand-500/10 text-brand-600 dark:text-brand-400 text-xs font-semibold mb-3 border border-brand-200 dark:border-brand-500/20">
+      ✨ منصتك للتطوير الذاتي والتعليم المجاني
     </div>
-    <h2 class="text-3xl font-black leading-tight mb-4">طوّر مهاراتك، تعلم التقنية والإنجليزية، وابنِ مستقبلك خطوة بخطوة.</h2>
-    <p class="text-slate-600 dark:text-slate-400 text-sm mb-6 leading-relaxed">منصة نَماء تجمع لك أهم المهارات الدراسية، واللغات، والتقنية، والمحتوى الإسلامي الموثوق مع نظام تحديات تفاعلي.</p>
-    <div class="flex justify-center gap-3">
-      <button class="px-6 py-3 bg-brand-600 text-white font-bold text-sm rounded-xl shadow-lg">ابدأ الآن مجاناً</button>
-      <button class="px-6 py-3 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 text-sm font-bold rounded-xl">استكشف الأقسام</button>
+    <h2 class="text-2xl md:text-3xl font-black leading-tight mb-3">طوّر مهاراتك ورسّخ معرفتك خطوة بخطوة</h2>
+    <p class="text-slate-600 dark:text-slate-400 text-xs md:text-sm mb-5 leading-relaxed">أنجز التحديات اليومية في الإنجليزية والتقنية والعلم الشرعي والدراسة واكسب النقاط!</p>
+  </section>
+
+  <!-- Daily Challenge Banner -->
+  <section class="px-4 mb-6 max-w-3xl mx-auto">
+    <div class="p-5 bg-gradient-to-r from-brand-600 to-teal-700 text-white rounded-3xl shadow-lg flex flex-col sm:flex-row items-center justify-between gap-4">
+      <div>
+        <span class="text-[11px] bg-white/20 px-2.5 py-1 rounded-full font-semibold">🔥 تحدي اليوم</span>
+        <h3 class="font-bold text-base mt-2">تعلم 3 كلمات إنجليزية جديدة وقراءة فائدة تقنية</h3>
+        <p class="text-xs text-brand-100 mt-1">تحدي سريع يمنحك +50 نقطة في حسابك الشخصي!</p>
+      </div>
+      <button id="claimChallengeBtn" onclick="completeChallenge()" class="w-full sm:w-auto px-5 py-2.5 bg-white text-brand-700 font-bold text-xs rounded-xl shadow hover:bg-brand-50 transition active:scale-95 whitespace-nowrap">
+        ✅ إنجاز التحدي (+50)
+      </button>
     </div>
   </section>
 
   <!-- Main Sections -->
-  <section class="px-4 py-6 max-w-5xl mx-auto">
-    <h3 class="text-xl font-bold mb-4">الأقسام الرئيسية</h3>
-    <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
-      <div class="p-4 bg-white dark:bg-slate-900 rounded-2xl border border-slate-200 dark:border-slate-800">
-        <div class="text-2xl mb-2">📚</div>
-        <h4 class="font-bold text-sm mb-1">قسم الدراسة</h4>
-        <p class="text-xs text-slate-500 dark:text-slate-400">ملخصات واختبارات لجميع المواد.</p>
-      </div>
-      <div class="p-4 bg-white dark:bg-slate-900 rounded-2xl border border-slate-200 dark:border-slate-800">
+  <section class="px-4 py-4 max-w-5xl mx-auto">
+    <h3 class="text-lg font-bold mb-3">الأقسام التعليمية والتفاعلية</h3>
+    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4">
+      
+      <!-- English Section -->
+      <div class="p-4 bg-white dark:bg-slate-900 rounded-2xl border border-slate-200 dark:border-slate-800 hover:border-brand-500 transition">
         <div class="text-2xl mb-2">🗣️</div>
         <h4 class="font-bold text-sm mb-1">اللغة الإنجليزية</h4>
-        <p class="text-xs text-slate-500 dark:text-slate-400">مفردات وقواعد وقراءة تدريجية.</p>
+        <p class="text-xs text-slate-500 dark:text-slate-400 mb-3">كلمة اليوم: <strong class="text-brand-600 dark:text-brand-400">Consistency</strong> (الاستمرارية).</p>
+        <button onclick="addPoints(10)" class="text-xs text-brand-600 dark:text-brand-400 font-bold hover:underline">حفظت الكلمة (+10) ←</button>
       </div>
-      <div class="p-4 bg-white dark:bg-slate-900 rounded-2xl border border-slate-200 dark:border-slate-800">
+
+      <!-- Tech Section -->
+      <div class="p-4 bg-white dark:bg-slate-900 rounded-2xl border border-slate-200 dark:border-slate-800 hover:border-brand-500 transition">
         <div class="text-2xl mb-2">💻</div>
         <h4 class="font-bold text-sm mb-1">قسم التقنية</h4>
-        <p class="text-xs text-slate-500 dark:text-slate-400">برمجة، ذكاء اصطناعي وأمن سيبراني.</p>
+        <p class="text-xs text-slate-500 dark:text-slate-400 mb-3">ما هو الـ API؟ هو جسر ينقل البيانات بين التطبيقات.</p>
+        <button onclick="addPoints(10)" class="text-xs text-brand-600 dark:text-brand-400 font-bold hover:underline">قمت بقراءتها (+10) ←</button>
       </div>
-      <div class="p-4 bg-white dark:bg-slate-900 rounded-2xl border border-slate-200 dark:border-slate-800">
+
+      <!-- Study Section -->
+      <div class="p-4 bg-white dark:bg-slate-900 rounded-2xl border border-slate-200 dark:border-slate-800 hover:border-brand-500 transition">
+        <div class="text-2xl mb-2">📚</div>
+        <h4 class="font-bold text-sm mb-1">مهارات الدراسة</h4>
+        <p class="text-xs text-slate-500 dark:text-slate-400 mb-3">تقنية البومودورو: ذاكر 25 دقيقة وخذ استراحة 5 دقائق.</p>
+        <button onclick="addPoints(10)" class="text-xs text-brand-600 dark:text-brand-400 font-bold hover:underline">طبق التحفيز (+10) ←</button>
+      </div>
+
+      <!-- Islamic/Values Section -->
+      <div class="p-4 bg-white dark:bg-slate-900 rounded-2xl border border-slate-200 dark:border-slate-800 hover:border-brand-500 transition">
         <div class="text-2xl mb-2">💡</div>
-        <h4 class="font-bold text-sm mb-1">معلومات ومفاهيم</h4>
-        <p class="text-xs text-slate-500 dark:text-slate-400">ثقافة عامة وعلوم ومهارات حياتية.</p>
+        <h4 class="font-bold text-sm mb-1">قيم وفكْر</h4>
+        <p class="text-xs text-slate-500 dark:text-slate-400 mb-3">حديث: «إنَّ اللهَ يُحِبَّ إذا عَمِلَ أحَدُكُم عَمَلاً أنْ يُتْقِنَهُ».</p>
+        <button onclick="addPoints(10)" class="text-xs text-brand-600 dark:text-brand-400 font-bold hover:underline">تدبّرت الحديث (+10) ←</button>
       </div>
+
     </div>
   </section>
 
-  <!-- Daily Benefit -->
-  <section class="px-4 py-6 max-w-3xl mx-auto">
-    <div class="p-6 bg-gradient-to-br from-slate-900 to-brand-950 text-white rounded-3xl shadow-xl">
-      <span class="text-xs bg-brand-500/20 text-brand-300 px-3 py-1 rounded-full border border-brand-500/30">✨ فائدة اليوم</span>
-      <blockquote class="text-lg font-bold my-3">"وَقُل رَّبِّ زِدْنِي عِلْمًا"</blockquote>
-      <p class="text-xs text-slate-300 mb-4">سورة طه - الآية 114 | تفسير مختصر: طلب الزيادة المستمرة من العلم النافع.</p>
-      <div class="text-xs text-brand-400 font-semibold">حديث اليوم: «خَيْرُكُمْ مَنْ تَعَلَّمَ الْقُرْآنَ وَعَلَّمَهُ» - [رواه البخاري]</div>
+  <!-- Daily Benefit Card -->
+  <section class="px-4 py-4 max-w-3xl mx-auto">
+    <div class="p-5 bg-gradient-to-br from-slate-900 to-brand-950 text-white rounded-3xl shadow-lg border border-slate-800">
+      <span class="text-[11px] bg-brand-500/20 text-brand-300 px-3 py-1 rounded-full border border-brand-500/30 font-semibold">✨ آية وفائدة</span>
+      <blockquote class="text-base font-bold my-2">"وَأَن لَّيْسَ لِلإِنسَانِ إِلاَّ مَا سَعَى"</blockquote>
+      <p class="text-xs text-slate-300 mb-2">سورة النجم | التفسير: كل جهد تبذله اليوم ستجني ثمرته نجاحاً وتوفيقاً في المستقبل.</p>
     </div>
   </section>
 
   <!-- Footer -->
-  <footer class="py-6 text-center text-xs text-slate-500 dark:text-slate-400 border-t border-slate-200 dark:border-slate-800 mt-8">
+  <footer class="py-6 text-center text-xs text-slate-500 dark:text-slate-400 border-t border-slate-200 dark:border-slate-800 mt-6">
     <p>© 2026 نَماء | NAMAA - جميع الحقوق محفوظة</p>
   </footer>
 
   <script>
+    // System Points Storage
+    let points = parseInt(localStorage.getItem('namaa_points')) || 0;
+    let challengeDone = localStorage.getItem('namaa_challenge_done') === 'true';
+
+    function updateDisplay() {
+      document.getElementById('userPoints').textContent = points;
+      const claimBtn = document.getElementById('claimChallengeBtn');
+      if (challengeDone && claimBtn) {
+        claimBtn.textContent = '🎉 تم إنجاز تحدي اليوم!';
+        claimBtn.disabled = true;
+        claimBtn.classList.add('opacity-70', 'cursor-not-allowed');
+      }
+    }
+
+    function addPoints(amount) {
+      points += amount;
+      localStorage.setItem('namaa_points', points);
+      updateDisplay();
+      alert(`🎉 أبدعت! كسبت +${amount} نقطة جديدة.`);
+    }
+
+    function completeChallenge() {
+      if (!challengeDone) {
+        points += 50;
+        challengeDone = true;
+        localStorage.setItem('namaa_points', points);
+        localStorage.setItem('namaa_challenge_done', 'true');
+        updateDisplay();
+        alert('🔥 كفو! أنجزت تحدي اليوم وكسبت +50 نقطة.');
+      }
+    }
+
+    // Theme Toggle
     const themeToggle = document.getElementById('themeToggle');
     themeToggle.addEventListener('click', () => {
       document.documentElement.classList.toggle('dark');
       themeToggle.textContent = document.documentElement.classList.contains('dark') ? '☀️' : '🌙';
     });
+
+    // Init Page State
+    updateDisplay();
   </script>
 </body>
 </html>
