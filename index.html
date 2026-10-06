@@ -54,22 +54,10 @@
         </div>
       </div>
 
-      <!-- User Stats & Actions -->
-      <div class="flex items-center gap-2">
-        <!-- Points Counter -->
-        <div class="flex items-center gap-2 bg-gradient-to-r from-amber-500/10 to-amber-600/10 text-amber-700 dark:text-amber-400 px-3.5 py-1.5 rounded-2xl border border-amber-500/20 text-xs font-bold shadow-sm">
-          <svg class="w-4 h-4 text-amber-500 fill-amber-500" viewBox="0 0 20 20">
-            <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/>
-          </svg>
-          <span id="userPoints" class="text-sm font-extrabold">0</span>
-          <span class="text-[10px] opacity-80">نقطة</span>
-        </div>
-
-        <!-- Dark Mode Toggle -->
-        <button id="themeToggle" class="p-2.5 rounded-2xl bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-700 transition active:scale-95 border border-slate-200/50 dark:border-slate-700/50" aria-label="تغيير المظهر">
-          🌙
-        </button>
-      </div>
+      <!-- Theme Toggle -->
+      <button id="themeToggle" class="p-2.5 rounded-2xl bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-700 transition active:scale-95 border border-slate-200/50 dark:border-slate-700/50" aria-label="تغيير المظهر">
+        🌙
+      </button>
     </div>
   </header>
 
@@ -85,46 +73,16 @@
     </h2>
     
     <p class="text-slate-600 dark:text-slate-400 text-xs sm:text-sm max-w-2xl mx-auto leading-relaxed">
-      أنجز التحديات اليومية في الإنجليزية والتقنية والعلم الشرعي والدراسة، واكسب النقاط لبناء عادة الإنجاز والتطور اليومي.
+      منصة نَماء تتيح لك الوصول المباشر لأهم الدروس والمحتويات التثقيفية والمهارات اليومية لتطوير حياتك العلمية والعملية.
     </p>
   </section>
 
-  <!-- Daily Challenge Card (Hero Feature) -->
-  <section class="px-4 mb-8 max-w-3xl mx-auto">
-    <div class="relative overflow-hidden p-6 rounded-3xl bg-gradient-to-br from-brand-700 via-brand-800 to-slate-900 text-white shadow-xl shadow-brand-900/10 border border-brand-600/30">
-      <!-- Background Decorative Elements -->
-      <div class="absolute -left-10 -bottom-10 w-40 h-40 bg-brand-500/20 rounded-full blur-2xl pointer-events-none"></div>
-      <div class="absolute -right-10 -top-10 w-40 h-40 bg-teal-500/20 rounded-full blur-2xl pointer-events-none"></div>
-
-      <div class="relative z-10 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-5">
-        <div class="space-y-2">
-          <div class="inline-flex items-center gap-1.5 bg-white/10 dark:bg-white/5 backdrop-blur-md px-3 py-1 rounded-xl text-[11px] font-bold text-brand-200 border border-white/10">
-            <span>🔥</span>
-            <span>تحدي اليوم الرئيسي</span>
-          </div>
-          <h3 class="font-black text-base sm:text-lg leading-snug text-white">
-            تعلم 3 كلمات إنجليزية جديدة وقراءة فائدة تقنية
-          </h3>
-          <p class="text-xs text-brand-100/80 leading-relaxed">
-            تحدي سريع ومباشر يمنحك +50 نقطة تضاف فوراً لحسابك!
-          </p>
-        </div>
-
-        <button id="claimChallengeBtn" onclick="completeChallenge()" class="w-full sm:w-auto px-6 py-3.5 bg-white text-brand-800 hover:bg-brand-50 font-extrabold text-xs sm:text-sm rounded-2xl shadow-lg shadow-black/10 transition-all duration-200 active:scale-95 whitespace-nowrap flex items-center justify-center gap-2">
-          <span>✅</span>
-          <span>إنجاز التحدي (+50)</span>
-        </button>
-      </div>
-    </div>
-  </section>
-
-  <!-- Interactive Learning Sections Grid -->
+  <!-- Educational Sections Grid -->
   <section class="px-4 py-4 max-w-5xl mx-auto">
     <div class="flex items-center justify-between mb-4">
       <h3 class="text-base sm:text-lg font-black text-slate-900 dark:text-white flex items-center gap-2">
-        <span>الأقسام التعليمية والتفاعلية</span>
+        <span>الأقسام التعليمية والتطويرية</span>
       </h3>
-      <span class="text-xs font-semibold text-slate-500 dark:text-slate-400">انقر لإنجاز المهمة</span>
     </div>
 
     <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
@@ -140,10 +98,6 @@
             كلمة اليوم: <strong class="text-brand-600 dark:text-brand-400 font-bold">Consistency</strong> (الاستمرارية).
           </p>
         </div>
-        <button onclick="addPoints(10)" class="w-full py-2.5 px-3 rounded-xl bg-slate-50 dark:bg-slate-800/80 hover:bg-brand-50 dark:hover:bg-brand-950/40 text-brand-700 dark:text-brand-400 font-bold text-xs border border-slate-200/60 dark:border-slate-700/60 hover:border-brand-300 transition active:scale-95 flex items-center justify-between">
-          <span>حفظت الكلمة</span>
-          <span class="text-[11px] font-extrabold bg-brand-500/10 px-2 py-0.5 rounded-md text-brand-600 dark:text-brand-400">+10</span>
-        </button>
       </div>
 
       <!-- Tech Section -->
@@ -157,10 +111,6 @@
             ما هو الـ API؟ هو جسر ينقل البيانات بين التطبيقات المختلفة.
           </p>
         </div>
-        <button onclick="addPoints(10)" class="w-full py-2.5 px-3 rounded-xl bg-slate-50 dark:bg-slate-800/80 hover:bg-brand-50 dark:hover:bg-brand-950/40 text-brand-700 dark:text-brand-400 font-bold text-xs border border-slate-200/60 dark:border-slate-700/60 hover:border-brand-300 transition active:scale-95 flex items-center justify-between">
-          <span>قمت بقراءتها</span>
-          <span class="text-[11px] font-extrabold bg-brand-500/10 px-2 py-0.5 rounded-md text-brand-600 dark:text-brand-400">+10</span>
-        </button>
       </div>
 
       <!-- Study Section -->
@@ -174,10 +124,6 @@
             تقنية البومودورو: ذاكر 25 دقيقة وخذ استراحة 5 دقائق.
           </p>
         </div>
-        <button onclick="addPoints(10)" class="w-full py-2.5 px-3 rounded-xl bg-slate-50 dark:bg-slate-800/80 hover:bg-brand-50 dark:hover:bg-brand-950/40 text-brand-700 dark:text-brand-400 font-bold text-xs border border-slate-200/60 dark:border-slate-700/60 hover:border-brand-300 transition active:scale-95 flex items-center justify-between">
-          <span>طبق التحفيز</span>
-          <span class="text-[11px] font-extrabold bg-brand-500/10 px-2 py-0.5 rounded-md text-brand-600 dark:text-brand-400">+10</span>
-        </button>
       </div>
 
       <!-- Values Section -->
@@ -191,10 +137,6 @@
             حديث: «إنَّ اللهَ يُحِبَّ إذا عَمِلَ أحَدُكُم عَمَلاً أنْ يُتْقِنَهُ».
           </p>
         </div>
-        <button onclick="addPoints(10)" class="w-full py-2.5 px-3 rounded-xl bg-slate-50 dark:bg-slate-800/80 hover:bg-brand-50 dark:hover:bg-brand-950/40 text-brand-700 dark:text-brand-400 font-bold text-xs border border-slate-200/60 dark:border-slate-700/60 hover:border-brand-300 transition active:scale-95 flex items-center justify-between">
-          <span>تدبّرت الحديث</span>
-          <span class="text-[11px] font-extrabold bg-brand-500/10 px-2 py-0.5 rounded-md text-brand-600 dark:text-brand-400">+10</span>
-        </button>
       </div>
 
     </div>
@@ -230,50 +172,13 @@
     </div>
   </footer>
 
-  <!-- Core JavaScript Logic (Preserved 100%) -->
   <script>
-    // System Points Storage
-    let points = parseInt(localStorage.getItem('namaa_points')) || 0;
-    let challengeDone = localStorage.getItem('namaa_challenge_done') === 'true';
-
-    function updateDisplay() {
-      document.getElementById('userPoints').textContent = points;
-      const claimBtn = document.getElementById('claimChallengeBtn');
-      if (challengeDone && claimBtn) {
-        claimBtn.innerHTML = '<span>🎉</span><span>تم إنجاز تحدي اليوم!</span>';
-        claimBtn.disabled = true;
-        claimBtn.classList.remove('bg-white', 'text-brand-800', 'hover:bg-brand-50');
-        claimBtn.classList.add('bg-brand-900/80', 'text-brand-200', 'opacity-80', 'cursor-not-allowed', 'border', 'border-brand-700/50');
-      }
-    }
-
-    function addPoints(amount) {
-      points += amount;
-      localStorage.setItem('namaa_points', points);
-      updateDisplay();
-      alert(`🎉 أبدعت! كسبت +${amount} نقطة جديدة.`);
-    }
-
-    function completeChallenge() {
-      if (!challengeDone) {
-        points += 50;
-        challengeDone = true;
-        localStorage.setItem('namaa_points', points);
-        localStorage.setItem('namaa_challenge_done', 'true');
-        updateDisplay();
-        alert('🔥 كفو! أنجزت تحدي اليوم وكسبت +50 نقطة.');
-      }
-    }
-
-    // Theme Toggle
+    // Theme Toggle Logic
     const themeToggle = document.getElementById('themeToggle');
     themeToggle.addEventListener('click', () => {
       document.documentElement.classList.toggle('dark');
       themeToggle.textContent = document.documentElement.classList.contains('dark') ? '☀️' : '🌙';
     });
-
-    // Init Page State
-    updateDisplay();
   </script>
 </body>
 </html>
