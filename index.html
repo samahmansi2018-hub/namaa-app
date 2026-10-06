@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="ar" dir="rtl">
+<html lang="ar" dir="rtl" class="scroll-smooth">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>🌱 نَماء | NAMAA - كل يوم خطوة نحو الأفضل</title>
+  <title>🌱 نَماء | NAMAA - منصة التنمية والتطوير الذاتي</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;800;900&display=swap" rel="stylesheet">
   <script>
@@ -13,95 +13,188 @@
         extend: {
           fontFamily: { sans: ['Tajawal', 'sans-serif'] },
           colors: {
-            brand: { 50: '#ecfdf5', 100: '#d1fae5', 500: '#10b981', 600: '#059669', 700: '#047857' }
+            brand: {
+              50: '#f0fdf4',
+              100: '#dcfce7',
+              200: '#bbf7d0',
+              500: '#22c55e',
+              600: '#16a34a',
+              700: '#15803d',
+              800: '#166534',
+              900: '#14532d',
+              950: '#052e16'
+            }
           }
         }
       }
     }
   </script>
+  <style>
+    .glass-effect {
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+    }
+  </style>
 </head>
-<body class="bg-slate-50 dark:bg-slate-950 text-slate-800 dark:text-slate-100 font-sans min-h-screen transition-colors duration-200">
+<body class="bg-slate-50 dark:bg-slate-950 text-slate-800 dark:text-slate-100 font-sans min-h-screen transition-colors duration-300 antialiased selection:bg-brand-500 selection:text-white">
 
   <!-- Header -->
-  <header class="sticky top-0 z-50 bg-white/90 dark:bg-slate-900/90 backdrop-blur-md border-b border-slate-200 dark:border-slate-800 px-4 py-3">
-    <div class="max-w-6xl mx-auto flex items-center justify-between">
+  <header class="sticky top-0 z-50 bg-white/80 dark:bg-slate-900/80 glass-effect border-b border-slate-200/80 dark:border-slate-800/80 px-4 py-3 transition-all">
+    <div class="max-w-6xl mx-auto flex items-center justify-between gap-2">
+      <!-- Logo -->
       <div class="flex items-center gap-3">
-        <div class="w-10 h-10 rounded-xl bg-brand-600 text-white flex items-center justify-center font-bold text-xl shadow-lg shadow-brand-600/20">🌱</div>
+        <div class="w-10 h-10 rounded-2xl bg-gradient-to-br from-brand-500 to-brand-700 text-white flex items-center justify-center font-bold text-xl shadow-md shadow-brand-600/20 ring-2 ring-brand-500/20">
+          🌱
+        </div>
         <div>
-          <h1 class="text-xl font-black text-brand-600 dark:text-brand-500 leading-none">نَماء <span class="text-xs font-normal text-slate-500">| NAMAA</span></h1>
-          <p class="text-[10px] text-slate-500 dark:text-slate-400 mt-0.5">كل يوم خطوة نحو الأفضل</p>
+          <h1 class="text-lg md:text-xl font-black text-slate-900 dark:text-white leading-none tracking-tight">
+            نَماء <span class="text-xs font-bold text-brand-600 dark:text-brand-400">| NAMAA</span>
+          </h1>
+          <p class="text-[10px] font-medium text-slate-500 dark:text-slate-400 mt-1">كل يوم خطوة نحو الأفضل</p>
         </div>
       </div>
+
+      <!-- User Stats & Actions -->
       <div class="flex items-center gap-2">
         <!-- Points Counter -->
-        <div class="flex items-center gap-1 bg-amber-500/10 text-amber-600 dark:text-amber-400 px-3 py-1.5 rounded-xl border border-amber-500/20 text-xs font-bold">
-          <span>⭐</span>
-          <span id="userPoints">0</span>
-          <span class="text-[10px]">نقطة</span>
+        <div class="flex items-center gap-2 bg-gradient-to-r from-amber-500/10 to-amber-600/10 text-amber-700 dark:text-amber-400 px-3.5 py-1.5 rounded-2xl border border-amber-500/20 text-xs font-bold shadow-sm">
+          <svg class="w-4 h-4 text-amber-500 fill-amber-500" viewBox="0 0 20 20">
+            <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/>
+          </svg>
+          <span id="userPoints" class="text-sm font-extrabold">0</span>
+          <span class="text-[10px] opacity-80">نقطة</span>
         </div>
-        <button id="themeToggle" class="p-2 rounded-xl bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300">🌙</button>
+
+        <!-- Dark Mode Toggle -->
+        <button id="themeToggle" class="p-2.5 rounded-2xl bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-700 transition active:scale-95 border border-slate-200/50 dark:border-slate-700/50" aria-label="تغيير المظهر">
+          🌙
+        </button>
       </div>
     </div>
   </header>
 
   <!-- Hero Section -->
-  <section class="px-4 py-8 text-center max-w-3xl mx-auto">
-    <div class="inline-block px-3 py-1 rounded-full bg-brand-50 dark:bg-brand-500/10 text-brand-600 dark:text-brand-400 text-xs font-semibold mb-3 border border-brand-200 dark:border-brand-500/20">
-      ✨ منصتك للتطوير الذاتي والتعليم المجاني
+  <section class="relative px-4 pt-8 pb-6 text-center max-w-4xl mx-auto">
+    <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-brand-50 dark:bg-brand-950/60 text-brand-700 dark:text-brand-300 text-xs font-bold mb-4 border border-brand-200/60 dark:border-brand-800/60 shadow-sm">
+      <span class="flex h-2 w-2 rounded-full bg-brand-500 animate-pulse"></span>
+      منصتك الذكية للتطوير الذاتي والتعلم المستمر
     </div>
-    <h2 class="text-2xl md:text-3xl font-black leading-tight mb-3">طوّر مهاراتك ورسّخ معرفتك خطوة بخطوة</h2>
-    <p class="text-slate-600 dark:text-slate-400 text-xs md:text-sm mb-5 leading-relaxed">أنجز التحديات اليومية في الإنجليزية والتقنية والعلم الشرعي والدراسة واكسب النقاط!</p>
+    
+    <h2 class="text-2xl sm:text-3xl md:text-4xl font-black text-slate-900 dark:text-white leading-snug tracking-tight mb-3">
+      طوّر مهاراتك ورسّخ معرفتك <span class="bg-gradient-to-l from-brand-600 to-teal-600 bg-clip-text text-transparent">خطوة بخطوة</span>
+    </h2>
+    
+    <p class="text-slate-600 dark:text-slate-400 text-xs sm:text-sm max-w-2xl mx-auto leading-relaxed">
+      أنجز التحديات اليومية في الإنجليزية والتقنية والعلم الشرعي والدراسة، واكسب النقاط لبناء عادة الإنجاز والتطور اليومي.
+    </p>
   </section>
 
-  <!-- Daily Challenge Banner -->
-  <section class="px-4 mb-6 max-w-3xl mx-auto">
-    <div class="p-5 bg-gradient-to-r from-brand-600 to-teal-700 text-white rounded-3xl shadow-lg flex flex-col sm:flex-row items-center justify-between gap-4">
-      <div>
-        <span class="text-[11px] bg-white/20 px-2.5 py-1 rounded-full font-semibold">🔥 تحدي اليوم</span>
-        <h3 class="font-bold text-base mt-2">تعلم 3 كلمات إنجليزية جديدة وقراءة فائدة تقنية</h3>
-        <p class="text-xs text-brand-100 mt-1">تحدي سريع يمنحك +50 نقطة في حسابك الشخصي!</p>
+  <!-- Daily Challenge Card (Hero Feature) -->
+  <section class="px-4 mb-8 max-w-3xl mx-auto">
+    <div class="relative overflow-hidden p-6 rounded-3xl bg-gradient-to-br from-brand-700 via-brand-800 to-slate-900 text-white shadow-xl shadow-brand-900/10 border border-brand-600/30">
+      <!-- Background Decorative Elements -->
+      <div class="absolute -left-10 -bottom-10 w-40 h-40 bg-brand-500/20 rounded-full blur-2xl pointer-events-none"></div>
+      <div class="absolute -right-10 -top-10 w-40 h-40 bg-teal-500/20 rounded-full blur-2xl pointer-events-none"></div>
+
+      <div class="relative z-10 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-5">
+        <div class="space-y-2">
+          <div class="inline-flex items-center gap-1.5 bg-white/10 dark:bg-white/5 backdrop-blur-md px-3 py-1 rounded-xl text-[11px] font-bold text-brand-200 border border-white/10">
+            <span>🔥</span>
+            <span>تحدي اليوم الرئيسي</span>
+          </div>
+          <h3 class="font-black text-base sm:text-lg leading-snug text-white">
+            تعلم 3 كلمات إنجليزية جديدة وقراءة فائدة تقنية
+          </h3>
+          <p class="text-xs text-brand-100/80 leading-relaxed">
+            تحدي سريع ومباشر يمنحك +50 نقطة تضاف فوراً لحسابك!
+          </p>
+        </div>
+
+        <button id="claimChallengeBtn" onclick="completeChallenge()" class="w-full sm:w-auto px-6 py-3.5 bg-white text-brand-800 hover:bg-brand-50 font-extrabold text-xs sm:text-sm rounded-2xl shadow-lg shadow-black/10 transition-all duration-200 active:scale-95 whitespace-nowrap flex items-center justify-center gap-2">
+          <span>✅</span>
+          <span>إنجاز التحدي (+50)</span>
+        </button>
       </div>
-      <button id="claimChallengeBtn" onclick="completeChallenge()" class="w-full sm:w-auto px-5 py-2.5 bg-white text-brand-700 font-bold text-xs rounded-xl shadow hover:bg-brand-50 transition active:scale-95 whitespace-nowrap">
-        ✅ إنجاز التحدي (+50)
-      </button>
     </div>
   </section>
 
-  <!-- Main Sections -->
+  <!-- Interactive Learning Sections Grid -->
   <section class="px-4 py-4 max-w-5xl mx-auto">
-    <h3 class="text-lg font-bold mb-3">الأقسام التعليمية والتفاعلية</h3>
-    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4">
+    <div class="flex items-center justify-between mb-4">
+      <h3 class="text-base sm:text-lg font-black text-slate-900 dark:text-white flex items-center gap-2">
+        <span>الأقسام التعليمية والتفاعلية</span>
+      </h3>
+      <span class="text-xs font-semibold text-slate-500 dark:text-slate-400">انقر لإنجاز المهمة</span>
+    </div>
+
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
       
       <!-- English Section -->
-      <div class="p-4 bg-white dark:bg-slate-900 rounded-2xl border border-slate-200 dark:border-slate-800 hover:border-brand-500 transition">
-        <div class="text-2xl mb-2">🗣️</div>
-        <h4 class="font-bold text-sm mb-1">اللغة الإنجليزية</h4>
-        <p class="text-xs text-slate-500 dark:text-slate-400 mb-3">كلمة اليوم: <strong class="text-brand-600 dark:text-brand-400">Consistency</strong> (الاستمرارية).</p>
-        <button onclick="addPoints(10)" class="text-xs text-brand-600 dark:text-brand-400 font-bold hover:underline">حفظت الكلمة (+10) ←</button>
+      <div class="group relative p-5 bg-white dark:bg-slate-900/90 rounded-2xl border border-slate-200/80 dark:border-slate-800 hover:border-brand-500/50 dark:hover:border-brand-500/50 shadow-sm hover:shadow-md transition-all duration-200 flex flex-col justify-between">
+        <div>
+          <div class="w-10 h-10 rounded-xl bg-blue-50 dark:bg-blue-950/50 text-blue-600 dark:text-blue-400 flex items-center justify-center text-lg mb-3 font-bold">
+            🗣️
+          </div>
+          <h4 class="font-bold text-sm text-slate-900 dark:text-white mb-1">اللغة الإنجليزية</h4>
+          <p class="text-xs text-slate-600 dark:text-slate-400 leading-relaxed mb-4">
+            كلمة اليوم: <strong class="text-brand-600 dark:text-brand-400 font-bold">Consistency</strong> (الاستمرارية).
+          </p>
+        </div>
+        <button onclick="addPoints(10)" class="w-full py-2.5 px-3 rounded-xl bg-slate-50 dark:bg-slate-800/80 hover:bg-brand-50 dark:hover:bg-brand-950/40 text-brand-700 dark:text-brand-400 font-bold text-xs border border-slate-200/60 dark:border-slate-700/60 hover:border-brand-300 transition active:scale-95 flex items-center justify-between">
+          <span>حفظت الكلمة</span>
+          <span class="text-[11px] font-extrabold bg-brand-500/10 px-2 py-0.5 rounded-md text-brand-600 dark:text-brand-400">+10</span>
+        </button>
       </div>
 
       <!-- Tech Section -->
-      <div class="p-4 bg-white dark:bg-slate-900 rounded-2xl border border-slate-200 dark:border-slate-800 hover:border-brand-500 transition">
-        <div class="text-2xl mb-2">💻</div>
-        <h4 class="font-bold text-sm mb-1">قسم التقنية</h4>
-        <p class="text-xs text-slate-500 dark:text-slate-400 mb-3">ما هو الـ API؟ هو جسر ينقل البيانات بين التطبيقات.</p>
-        <button onclick="addPoints(10)" class="text-xs text-brand-600 dark:text-brand-400 font-bold hover:underline">قمت بقراءتها (+10) ←</button>
+      <div class="group relative p-5 bg-white dark:bg-slate-900/90 rounded-2xl border border-slate-200/80 dark:border-slate-800 hover:border-brand-500/50 dark:hover:border-brand-500/50 shadow-sm hover:shadow-md transition-all duration-200 flex flex-col justify-between">
+        <div>
+          <div class="w-10 h-10 rounded-xl bg-purple-50 dark:bg-purple-950/50 text-purple-600 dark:text-purple-400 flex items-center justify-center text-lg mb-3 font-bold">
+            💻
+          </div>
+          <h4 class="font-bold text-sm text-slate-900 dark:text-white mb-1">قسم التقنية</h4>
+          <p class="text-xs text-slate-600 dark:text-slate-400 leading-relaxed mb-4">
+            ما هو الـ API؟ هو جسر ينقل البيانات بين التطبيقات المختلفة.
+          </p>
+        </div>
+        <button onclick="addPoints(10)" class="w-full py-2.5 px-3 rounded-xl bg-slate-50 dark:bg-slate-800/80 hover:bg-brand-50 dark:hover:bg-brand-950/40 text-brand-700 dark:text-brand-400 font-bold text-xs border border-slate-200/60 dark:border-slate-700/60 hover:border-brand-300 transition active:scale-95 flex items-center justify-between">
+          <span>قمت بقراءتها</span>
+          <span class="text-[11px] font-extrabold bg-brand-500/10 px-2 py-0.5 rounded-md text-brand-600 dark:text-brand-400">+10</span>
+        </button>
       </div>
 
       <!-- Study Section -->
-      <div class="p-4 bg-white dark:bg-slate-900 rounded-2xl border border-slate-200 dark:border-slate-800 hover:border-brand-500 transition">
-        <div class="text-2xl mb-2">📚</div>
-        <h4 class="font-bold text-sm mb-1">مهارات الدراسة</h4>
-        <p class="text-xs text-slate-500 dark:text-slate-400 mb-3">تقنية البومودورو: ذاكر 25 دقيقة وخذ استراحة 5 دقائق.</p>
-        <button onclick="addPoints(10)" class="text-xs text-brand-600 dark:text-brand-400 font-bold hover:underline">طبق التحفيز (+10) ←</button>
+      <div class="group relative p-5 bg-white dark:bg-slate-900/90 rounded-2xl border border-slate-200/80 dark:border-slate-800 hover:border-brand-500/50 dark:hover:border-brand-500/50 shadow-sm hover:shadow-md transition-all duration-200 flex flex-col justify-between">
+        <div>
+          <div class="w-10 h-10 rounded-xl bg-emerald-50 dark:bg-emerald-950/50 text-emerald-600 dark:text-emerald-400 flex items-center justify-center text-lg mb-3 font-bold">
+            📚
+          </div>
+          <h4 class="font-bold text-sm text-slate-900 dark:text-white mb-1">مهارات الدراسة</h4>
+          <p class="text-xs text-slate-600 dark:text-slate-400 leading-relaxed mb-4">
+            تقنية البومودورو: ذاكر 25 دقيقة وخذ استراحة 5 دقائق.
+          </p>
+        </div>
+        <button onclick="addPoints(10)" class="w-full py-2.5 px-3 rounded-xl bg-slate-50 dark:bg-slate-800/80 hover:bg-brand-50 dark:hover:bg-brand-950/40 text-brand-700 dark:text-brand-400 font-bold text-xs border border-slate-200/60 dark:border-slate-700/60 hover:border-brand-300 transition active:scale-95 flex items-center justify-between">
+          <span>طبق التحفيز</span>
+          <span class="text-[11px] font-extrabold bg-brand-500/10 px-2 py-0.5 rounded-md text-brand-600 dark:text-brand-400">+10</span>
+        </button>
       </div>
 
-      <!-- Islamic/Values Section -->
-      <div class="p-4 bg-white dark:bg-slate-900 rounded-2xl border border-slate-200 dark:border-slate-800 hover:border-brand-500 transition">
-        <div class="text-2xl mb-2">💡</div>
-        <h4 class="font-bold text-sm mb-1">قيم وفكْر</h4>
-        <p class="text-xs text-slate-500 dark:text-slate-400 mb-3">حديث: «إنَّ اللهَ يُحِبَّ إذا عَمِلَ أحَدُكُم عَمَلاً أنْ يُتْقِنَهُ».</p>
-        <button onclick="addPoints(10)" class="text-xs text-brand-600 dark:text-brand-400 font-bold hover:underline">تدبّرت الحديث (+10) ←</button>
+      <!-- Values Section -->
+      <div class="group relative p-5 bg-white dark:bg-slate-900/90 rounded-2xl border border-slate-200/80 dark:border-slate-800 hover:border-brand-500/50 dark:hover:border-brand-500/50 shadow-sm hover:shadow-md transition-all duration-200 flex flex-col justify-between">
+        <div>
+          <div class="w-10 h-10 rounded-xl bg-amber-50 dark:bg-amber-950/50 text-amber-600 dark:text-amber-400 flex items-center justify-center text-lg mb-3 font-bold">
+            💡
+          </div>
+          <h4 class="font-bold text-sm text-slate-900 dark:text-white mb-1">قيم وفكْر</h4>
+          <p class="text-xs text-slate-600 dark:text-slate-400 leading-relaxed mb-4">
+            حديث: «إنَّ اللهَ يُحِبَّ إذا عَمِلَ أحَدُكُم عَمَلاً أنْ يُتْقِنَهُ».
+          </p>
+        </div>
+        <button onclick="addPoints(10)" class="w-full py-2.5 px-3 rounded-xl bg-slate-50 dark:bg-slate-800/80 hover:bg-brand-50 dark:hover:bg-brand-950/40 text-brand-700 dark:text-brand-400 font-bold text-xs border border-slate-200/60 dark:border-slate-700/60 hover:border-brand-300 transition active:scale-95 flex items-center justify-between">
+          <span>تدبّرت الحديث</span>
+          <span class="text-[11px] font-extrabold bg-brand-500/10 px-2 py-0.5 rounded-md text-brand-600 dark:text-brand-400">+10</span>
+        </button>
       </div>
 
     </div>
@@ -109,18 +202,35 @@
 
   <!-- Daily Benefit Card -->
   <section class="px-4 py-4 max-w-3xl mx-auto">
-    <div class="p-5 bg-gradient-to-br from-slate-900 to-brand-950 text-white rounded-3xl shadow-lg border border-slate-800">
-      <span class="text-[11px] bg-brand-500/20 text-brand-300 px-3 py-1 rounded-full border border-brand-500/30 font-semibold">✨ آية وفائدة</span>
-      <blockquote class="text-base font-bold my-2">"وَأَن لَّيْسَ لِلإِنسَانِ إِلاَّ مَا سَعَى"</blockquote>
-      <p class="text-xs text-slate-300 mb-2">سورة النجم | التفسير: كل جهد تبذله اليوم ستجني ثمرته نجاحاً وتوفيقاً في المستقبل.</p>
+    <div class="relative p-6 bg-slate-900 text-white rounded-3xl border border-slate-800 shadow-xl overflow-hidden">
+      <div class="absolute top-0 right-0 w-32 h-32 bg-brand-500/10 rounded-full blur-2xl pointer-events-none"></div>
+      
+      <div class="relative z-10 space-y-3">
+        <div class="inline-flex items-center gap-1.5 px-3 py-1 rounded-xl bg-brand-500/20 text-brand-300 border border-brand-500/30 text-[11px] font-bold">
+          ✨ آية وفائدة
+        </div>
+        <blockquote class="text-lg sm:text-xl font-extrabold text-white leading-relaxed">
+          "وَأَن لَّيْسَ لِلإِنسَانِ إِلاَّ مَا سَعَى"
+        </blockquote>
+        <p class="text-xs text-slate-300 leading-relaxed border-t border-slate-800 pt-3">
+          <strong class="text-brand-400">سورة النجم</strong> | التفسير: كل جهد تبذله اليوم ستجني ثمرته نجاحاً وتوفيقاً في المستقبل.
+        </p>
+      </div>
     </div>
   </section>
 
   <!-- Footer -->
-  <footer class="py-6 text-center text-xs text-slate-500 dark:text-slate-400 border-t border-slate-200 dark:border-slate-800 mt-6">
-    <p>© 2026 نَماء | NAMAA - جميع الحقوق محفوظة</p>
+  <footer class="py-8 text-center text-xs text-slate-500 dark:text-slate-400 border-t border-slate-200/80 dark:border-slate-800/80 mt-12 bg-white/40 dark:bg-slate-950/40">
+    <div class="max-w-6xl mx-auto px-4 flex flex-col sm:flex-row items-center justify-between gap-3">
+      <div class="flex items-center gap-2">
+        <span class="text-base">🌱</span>
+        <span class="font-bold text-slate-800 dark:text-slate-200">منصة نَماء | NAMAA</span>
+      </div>
+      <p>© 2026 جميع الحقوق محفوظة</p>
+    </div>
   </footer>
 
+  <!-- Core JavaScript Logic (Preserved 100%) -->
   <script>
     // System Points Storage
     let points = parseInt(localStorage.getItem('namaa_points')) || 0;
@@ -130,9 +240,10 @@
       document.getElementById('userPoints').textContent = points;
       const claimBtn = document.getElementById('claimChallengeBtn');
       if (challengeDone && claimBtn) {
-        claimBtn.textContent = '🎉 تم إنجاز تحدي اليوم!';
+        claimBtn.innerHTML = '<span>🎉</span><span>تم إنجاز تحدي اليوم!</span>';
         claimBtn.disabled = true;
-        claimBtn.classList.add('opacity-70', 'cursor-not-allowed');
+        claimBtn.classList.remove('bg-white', 'text-brand-800', 'hover:bg-brand-50');
+        claimBtn.classList.add('bg-brand-900/80', 'text-brand-200', 'opacity-80', 'cursor-not-allowed', 'border', 'border-brand-700/50');
       }
     }
 
