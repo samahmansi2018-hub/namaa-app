@@ -5,19 +5,15 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>🌱 نَماء | NAMAA - منصة التنمية والتطوير الذاتي</title>
   <script src="https://cdn.tailwindcss.com"></script>
-  <!-- استدعاء خط تجول للواجهة + خط أميري قرآن كبديل -->
-  <link href="https://fonts.googleapis.com/css2?family=Amiri+Quran&family=Tajawal:wght@400;500;700;800;900&display=swap" rel="stylesheet">
   
-  <style>
-    /* استدعاء خط مجمع الملك فهد للرسم العثماني */
-    @font-face {
-      font-family: 'UthmanicScript';
-      src: url('https://quran.com/fonts/uthmanic_hafs/KFGQPCUthmanicScriptHafs-Regular.woff2') format('woff2');
-      font-display: swap;
-    }
+  <!-- استدعاء خط المصحف الشريف من مجمع الملك فهد + خط تجول -->
+  <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://quran.com/fonts/uthmanic_hafs/KFGQPCUthmanicScriptHafs-Regular.css">
 
+  <style>
+    /* تطبيق خط المصحف العثماني المعتمد */
     .font-uthmani {
-      font-family: 'UthmanicScript', 'Amiri Quran', serif;
+      font-family: 'KFGQPC Uthmanic Script Hafs', 'UthmanicScript', serif;
     }
 
     .glass-effect {
@@ -33,7 +29,7 @@
         extend: {
           fontFamily: { 
             sans: ['Tajawal', 'sans-serif'],
-            uthmani: ['UthmanicScript', 'Amiri Quran', 'serif']
+            uthmani: ['"KFGQPC Uthmanic Script Hafs"', 'serif']
           },
           colors: {
             brand: {
@@ -67,7 +63,7 @@
           <h1 class="text-lg md:text-xl font-black text-slate-900 dark:text-white leading-none tracking-tight">
             نَماء <span class="text-xs font-bold text-brand-600 dark:text-brand-400">| NAMAA</span>
           </h1>
-          <!-- الآية بالرسم العثماني المصحفي المعتمد -->
+          <!-- النص القرآني بالرسم العثماني الدقيق ومقبوض بالخط المخصص -->
           <p class="font-uthmani text-sm sm:text-base font-normal text-brand-700 dark:text-brand-300 mt-1 leading-relaxed">
             ﴿وَأَن لَّيْسَ لِلْإِنسَـٰنِ إِلَّا مَا سَعَىٰ﴾
           </p>
