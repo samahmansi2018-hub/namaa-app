@@ -5,25 +5,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>🌱 نَماء | NAMAA - منصة التنمية والتطوير الذاتي</title>
   <script src="https://cdn.tailwindcss.com"></script>
-  
-  <!-- استدعاء خط تجول -->
   <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;800;900&display=swap" rel="stylesheet">
 
   <style>
-    /* استدعاء خط مصحف المدينة النبوية المعتمد (KFGQPC Uthmanic Script) */
-    @font-face {
-      font-family: 'KFGQPCUthmanic';
-      src: url('https://cdn.jsdelivr.net/gh/mustafa0x/quran-me@master/src/assets/fonts/KFGQPCUthmanicScriptHafs-Regular.woff2') format('woff2'),
-           url('https://cdn.jsdelivr.net/gh/mustafa0x/quran-me@master/src/assets/fonts/KFGQPCUthmanicScriptHafs-Regular.woff') format('woff');
-      font-weight: normal;
-      font-style: normal;
-      font-display: swap;
-    }
-
-    .font-quran-exact {
-      font-family: 'KFGQPCUthmanic', 'Amiri Quran', serif;
-    }
-
     .glass-effect {
       backdrop-filter: blur(12px);
       -webkit-backdrop-filter: blur(12px);
@@ -36,8 +20,7 @@
       theme: {
         extend: {
           fontFamily: { 
-            sans: ['Tajawal', 'sans-serif'],
-            quran: ['KFGQPCUthmanic', 'serif']
+            sans: ['Tajawal', 'sans-serif']
           },
           colors: {
             brand: {
@@ -71,10 +54,14 @@
           <h1 class="text-lg md:text-xl font-black text-slate-900 dark:text-white leading-none tracking-tight">
             نَماء <span class="text-xs font-bold text-brand-600 dark:text-brand-400">| NAMAA</span>
           </h1>
-          <!-- النص بالرسم والخط المطابق تماماً للصورة -->
-          <p class="font-quran-exact text-base sm:text-lg font-normal text-brand-700 dark:text-brand-300 mt-1 leading-relaxed tracking-wide">
-            ﴿وَأَن لَّيْسَ لِلْإِنسَـٰنِ إِلَّا مَا سَعَىٰ﴾
-          </p>
+          
+          <!-- المخطوطة القرآنية للآية الكريمة بنفس رسم الصورة تماماً -->
+          <div class="mt-1 flex items-center">
+            <span class="text-brand-700 dark:text-brand-300 text-sm font-bold ml-0.5">﴿</span>
+            <img src="https://api.quran.com/api/v4/quran/verses/uthmani?verse_key=53:39" class="h-5 sm:h-6 inline-block filter dark:invert dark:brightness-200 opacity-90" alt="وَأَن لَّيْسَ لِلْإِنسَـٰنِ إِلَّا مَا سَعَىٰ" />
+            <span class="text-brand-700 dark:text-brand-300 text-sm font-bold mr-0.5">﴾</span>
+          </div>
+
         </div>
       </div>
 
