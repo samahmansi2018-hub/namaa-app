@@ -197,3 +197,28 @@
 </body>
 </html>
 <script type="module" src="./firebase.js"></script>
+<!-- كود نموذج الدعم الفني -->
+<script type="module">
+  import { db } from "./firebase.js";
+  import { collection, addDoc, serverTimestamp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js";
+
+  async function sendSupportMessage(name, email, message) {
+    try {
+      await addDoc(collection(db, "support_tickets"), {
+        name: name,
+        email: email,
+        message: message,
+        createdAt: serverTimestamp(),
+        status: "new"
+      });
+      alert("تم إرسال رسالتك بنجاح! سيتواصل معك فريق الدعم قريباً.");
+    } catch (error) {
+      console.error("خطأ في إرسال الرسالة: ", error);
+      alert("حدث خطأ أثناء إرسال الرسالة، يرجى المحاولة لاحقاً.");
+    }
+  }
+
+  window.sendSupportMessage = sendSupportMessage;
+</script>
+
+<script type="module" src="./firebase.js"></script>
