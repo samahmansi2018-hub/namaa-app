@@ -1,224 +1,139 @@
 <!DOCTYPE html>
-<html lang="ar" dir="rtl" class="scroll-smooth">
+<html lang="ar" dir="rtl">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>🌱 نَماء | NAMAA - منصة التنمية والتطوير الذاتي</title>
-  <script src="https://cdn.tailwindcss.com"></script>
-  <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;800;900&display=swap" rel="stylesheet">
-
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>نَماء - منصة التواصل والدعم</title>
   <style>
-    .glass-effect {
-      backdrop-filter: blur(12px);
-      -webkit-backdrop-filter: blur(12px);
+    body {
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+      margin: 0;
+      padding: 20px;
+      background-color: #f9fafb;
+      color: #1f2937;
+    }
+    .container {
+      max-width: 600px;
+      margin: 0 auto;
+      background: #ffffff;
+      padding: 25px;
+      border-radius: 12px;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+    }
+    h1, h2, h3 {
+      text-align: center;
+      color: #111827;
+    }
+    .form-group {
+      margin-bottom: 15px;
+    }
+    label {
+      display: block;
+      margin-bottom: 5px;
+      font-weight: 600;
+    }
+    input, textarea {
+      width: 100%;
+      padding: 10px;
+      border: 1px solid #d1d5db;
+      border-radius: 6px;
+      box-sizing: border-box;
+      font-size: 14px;
+    }
+    button {
+      width: 100%;
+      padding: 12px;
+      background-color: #10b981;
+      color: white;
+      border: none;
+      border-radius: 6px;
+      font-size: 16px;
+      font-weight: bold;
+      cursor: pointer;
+      transition: background-color 0.2s;
+    }
+    button:hover {
+      background-color: #059669;
     }
   </style>
+</head>
+<body>
+
+  <div class="container">
+    <h1>منصة نَماء</h1>
+    <p style="text-align: center;">أهلاً بك في منصة نَماء. يسعدنا تواصلك معنا دائماً.</p>
+
+    <!-- نموذج الدعم الفني -->
+    <div style="margin-top: 30px; padding-top: 20px; border-top: 1px solid #e5e7eb;">
+      <h3>التواصل مع الدعم الفني</h3>
+      
+      <div class="form-group">
+        <label for="suppName">الاسم:</label>
+        <input type="text" id="suppName" placeholder="أدخل اسمك الكريم" />
+      </div>
+
+      <div class="form-group">
+        <label for="suppEmail">البريد الإلكتروني:</label>
+        <input type="email" id="suppEmail" placeholder="example@domain.com" />
+      </div>
+
+      <div class="form-group">
+        <label for="suppMsg">تفاصيل المشكلة أو الاستفسار:</label>
+        <textarea id="suppMsg" rows="4" placeholder="اكتب رسالتك هنا..."></textarea>
+      </div>
+
+      <button type="button" onclick="handleSupportSubmit()">إرسال الرسالة</button>
+    </div>
+  </div>
+
+  <!-- سكربت الربط مع Firebase والدعم الفني -->
+  <script type="module">
+    import { db } from "./firebase.js";
+    import { collection, addDoc, serverTimestamp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js";
+
+    async function sendSupportMessage(name, email, message) {
+      try {
+        await addDoc(collection(db, "support_tickets"), {
+          name: name,
+          email: email,
+          message: message,
+          createdAt: serverTimestamp(),
+          status: "new"
+        });
+        alert("تم إرسال رسالتك بنجاح! سيتواصل معك فريق الدعم قريباً.");
+        
+        // تفريغ الحقول بعد الإرسال
+        document.getElementById('suppName').value = '';
+        document.getElementById('suppEmail').value = '';
+        document.getElementById('suppMsg').value = '';
+      } catch (error) {
+        console.error("خطأ في إرسال الرسالة: ", error);
+        alert("حدث خطأ أثناء إرسال الرسالة، يرجى المحاولة لاحقاً.");
+      }
+    }
+
+    window.sendSupportMessage = sendSupportMessage;
+  </script>
 
   <script>
-    tailwind.config = {
-      darkMode: 'class',
-      theme: {
-        extend: {
-          fontFamily: { 
-            sans: ['Tajawal', 'sans-serif']
-          },
-          colors: {
-            brand: {
-              50: '#f0fdf4',
-              100: '#dcfce7',
-              200: '#bbf7d0',
-              500: '#22c55e',
-              600: '#16a34a',
-              700: '#15803d',
-              800: '#166534',
-              900: '#14532d',
-              950: '#052e16'
-            }
-          }
-        }
+    function handleSupportSubmit() {
+      const name = document.getElementById('suppName').value.trim();
+      const email = document.getElementById('suppEmail').value.trim();
+      const msg = document.getElementById('suppMsg').value.trim();
+
+      if(!name || !email || !msg) {
+        alert("يرجى تعبئة جميع الحقول قبل الإرسال");
+        return;
+      }
+
+      if (window.sendSupportMessage) {
+        window.sendSupportMessage(name, email, msg);
+      } else {
+        alert("جاري تحميل النظام، يرجى المحاولة بعد لحظات");
       }
     }
   </script>
-</head>
-<body class="bg-slate-50 dark:bg-slate-950 text-slate-800 dark:text-slate-100 font-sans min-h-screen transition-colors duration-300 antialiased selection:bg-brand-500 selection:text-white">
 
-  <!-- Header -->
-  <header class="sticky top-0 z-50 bg-white/80 dark:bg-slate-900/80 glass-effect border-b border-slate-200/80 dark:border-slate-800/80 px-4 py-3.5 transition-all">
-    <div class="max-w-6xl mx-auto flex items-center justify-between gap-2 relative">
-      
-      <!-- Logo -->
-      <div class="flex items-center gap-3">
-        <div class="w-10 h-10 rounded-2xl bg-gradient-to-br from-brand-500 to-brand-700 text-white flex items-center justify-center font-bold text-xl shadow-md shadow-brand-600/20 ring-2 ring-brand-500/20">
-          🌱
-        </div>
-        <div>
-          <h1 class="text-xl font-black text-slate-900 dark:text-white leading-none tracking-tight">
-            نَماء <span class="text-xs font-bold text-brand-600 dark:text-brand-400">| NAMAA</span>
-          </h1>
-        </div>
-      </div>
-
-      <!-- Settings Menu Container -->
-      <div class="relative">
-        <!-- Settings Button -->
-        <button id="settingsBtn" aria-label="الإعدادات" class="p-2.5 rounded-xl bg-slate-100 dark:bg-slate-800/80 text-slate-600 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-700/80 transition-all duration-200 border border-slate-200/60 dark:border-slate-700/60 flex items-center justify-center">
-          <!-- SVG Gear Icon -->
-          <svg class="w-5 h-5 stroke-current" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-            <path stroke-linecap="round" stroke-linejoin="round" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" />
-            <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
-          </svg>
-        </button>
-
-        <!-- Dropdown Menu -->
-        <div id="settingsMenu" class="hidden absolute left-0 mt-2 w-48 bg-white dark:bg-slate-900 rounded-2xl shadow-xl border border-slate-200/80 dark:border-slate-800 p-1.5 z-50 transition-all duration-200">
-          
-          <!-- Toggle Theme Option -->
-          <button id="themeToggle" class="w-full text-right px-3 py-2.5 rounded-xl text-xs sm:text-sm font-semibold text-slate-700 dark:text-slate-200 hover:bg-slate-100 dark:hover:bg-slate-800 transition flex items-center justify-between gap-2">
-            <span class="flex items-center gap-2">
-              <span id="themeIcon">🌙</span>
-              <span>المظهر</span>
-            </span>
-            <span id="themeStatusText" class="text-[10px] text-slate-400 font-normal">داكن</span>
-          </button>
-
-          <div class="h-px bg-slate-100 dark:bg-slate-800 my-1"></div>
-
-          <!-- Support Option -->
-          <a href="mailto:support@namaa.app" class="w-full text-right px-3 py-2.5 rounded-xl text-xs sm:text-sm font-semibold text-slate-700 dark:text-slate-200 hover:bg-slate-100 dark:hover:bg-slate-800 transition flex items-center gap-2">
-            <span>💬</span>
-            <span>الدعم الفني</span>
-          </a>
-
-        </div>
-      </div>
-
-    </div>
-  </header>
-
-  <!-- Hero Section -->
-  <section class="relative px-4 pt-8 pb-6 text-center max-w-4xl mx-auto">
-    <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-brand-50 dark:bg-brand-950/60 text-brand-700 dark:text-brand-300 text-xs font-bold mb-4 border border-brand-200/60 dark:border-brand-800/60 shadow-sm">
-      <span class="flex h-2 w-2 rounded-full bg-brand-500 animate-pulse"></span>
-      منصتك الذكية للتطوير الذاتي والتعلم المستمر
-    </div>
-    
-    <h2 class="text-2xl sm:text-3xl md:text-4xl font-black text-slate-900 dark:text-white leading-snug tracking-tight mb-3">
-      طوّر مهاراتك ورسّخ معرفتك <span class="bg-gradient-to-l from-brand-600 to-teal-600 bg-clip-text text-transparent">خطوة بخطوة</span>
-    </h2>
-    
-    <p class="text-slate-600 dark:text-slate-400 text-xs sm:text-sm max-w-2xl mx-auto leading-relaxed">
-      منصة نَماء تتيح لك الوصول المباشر لأهم الدروس والمحتويات التثقيفية والمهارات اليومية لتطوير حياتك العلمية والعملية.
-    </p>
-  </section>
-
-  <!-- Educational Sections Grid -->
-  <section class="px-4 py-4 max-w-5xl mx-auto">
-    <div class="flex items-center justify-between mb-4">
-      <h3 class="text-base sm:text-lg font-black text-slate-900 dark:text-white flex items-center gap-2">
-        <span>الأقسام التعليمية والتطويرية</span>
-      </h3>
-    </div>
-
-    <!-- شبكة الأقسام -->
-    <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
-      
-      <!-- Languages Section -->
-      <div class="group relative p-6 bg-white dark:bg-slate-900/90 rounded-2xl border border-slate-200/80 dark:border-slate-800 hover:border-brand-500/50 dark:hover:border-brand-500/50 shadow-sm hover:shadow-md transition-all duration-200 flex flex-col justify-center cursor-pointer">
-        <div>
-          <h4 class="font-extrabold text-base sm:text-lg text-slate-900 dark:text-white mb-1">تعلم اللغات</h4>
-          <p class="text-xs text-slate-400 dark:text-slate-400 leading-relaxed">
-            اللغة الإنجليزية
-          </p>
-        </div>
-      </div>
-
-      <!-- Study Section -->
-      <div class="group relative p-6 bg-white dark:bg-slate-900/90 rounded-2xl border border-slate-200/80 dark:border-slate-800 hover:border-brand-500/50 dark:hover:border-brand-500/50 shadow-sm hover:shadow-md transition-all duration-200 flex flex-col justify-center cursor-pointer">
-        <div>
-          <h4 class="font-extrabold text-base sm:text-lg text-slate-900 dark:text-white mb-1">مهارات الدراسة</h4>
-          <p class="text-xs text-slate-400 dark:text-slate-400 leading-relaxed">
-            طرق المذاكرة وزيادة التركيز
-          </p>
-        </div>
-      </div>
-
-      <!-- Faith Section -->
-      <div class="group relative p-6 bg-white dark:bg-slate-900/90 rounded-2xl border border-slate-200/80 dark:border-slate-800 hover:border-brand-500/50 dark:hover:border-brand-500/50 shadow-sm hover:shadow-md transition-all duration-200 flex flex-col justify-center cursor-pointer">
-        <div>
-          <h4 class="font-extrabold text-base sm:text-lg text-slate-900 dark:text-white mb-1">قبس الإيمان</h4>
-          <p class="text-xs text-slate-400 dark:text-slate-400 leading-relaxed">
-            أحاديث وآيات وأذكار
-          </p>
-        </div>
-      </div>
-
-    </div>
-  </section>
-
-  <!-- Footer -->
-  <footer class="py-8 text-center text-xs text-slate-500 dark:text-slate-400 border-t border-slate-200/80 dark:border-slate-800/80 mt-12 bg-white/40 dark:bg-slate-950/40">
-    <div class="max-w-6xl mx-auto px-4 flex flex-col sm:flex-row items-center justify-between gap-3">
-      <div class="flex items-center gap-2">
-        <span class="text-base">🌱</span>
-        <span class="font-bold text-slate-800 dark:text-slate-200">منصة نَماء | NAMAA</span>
-      </div>
-      <p>© 2026 جميع الحقوق محفوظة</p>
-    </div>
-  </footer>
-
-  <script>
-    // Elements
-    const settingsBtn = document.getElementById('settingsBtn');
-    const settingsMenu = document.getElementById('settingsMenu');
-    const themeToggle = document.getElementById('themeToggle');
-    const themeIcon = document.getElementById('themeIcon');
-    const themeStatusText = document.getElementById('themeStatusText');
-
-    // Toggle Dropdown Menu
-    settingsBtn.addEventListener('click', (e) => {
-      e.stopPropagation();
-      settingsMenu.classList.toggle('hidden');
-    });
-
-    // Close Menu when clicking outside
-    document.addEventListener('click', (e) => {
-      if (!settingsMenu.contains(e.target) && !settingsBtn.contains(e.target)) {
-        settingsMenu.classList.add('hidden');
-      }
-    });
-
-    // Theme Toggle Logic
-    themeToggle.addEventListener('click', () => {
-      const isDark = document.documentElement.classList.toggle('dark');
-      themeIcon.textContent = isDark ? '☀️' : '🌙';
-      themeStatusText.textContent = isDark ? 'فاتح' : 'داكن';
-    });
-  </script>
+  <script type="module" src="./firebase.js"></script>
 </body>
 </html>
-<script type="module" src="./firebase.js"></script>
-<!-- كود نموذج الدعم الفني -->
-<script type="module">
-  import { db } from "./firebase.js";
-  import { collection, addDoc, serverTimestamp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js";
-
-  async function sendSupportMessage(name, email, message) {
-    try {
-      await addDoc(collection(db, "support_tickets"), {
-        name: name,
-        email: email,
-        message: message,
-        createdAt: serverTimestamp(),
-        status: "new"
-      });
-      alert("تم إرسال رسالتك بنجاح! سيتواصل معك فريق الدعم قريباً.");
-    } catch (error) {
-      console.error("خطأ في إرسال الرسالة: ", error);
-      alert("حدث خطأ أثناء إرسال الرسالة، يرجى المحاولة لاحقاً.");
-    }
-  }
-
-  window.sendSupportMessage = sendSupportMessage;
-</script>
-
-<script type="module" src="./firebase.js"></script>
