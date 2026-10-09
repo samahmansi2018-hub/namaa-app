@@ -3,22 +3,21 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>منصة نَماء | Namaa Platform</title>
+  <title>منصة نَماء الرقمية</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;800;900&display=swap" rel="stylesheet">
   <style>
     :root {
       --primary: #059669;
-      --primary-hover: #047857;
+      --primary-dark: #047857;
       --primary-light: #ecfdf5;
+      --accent: #f59e0b;
       --dark: #0f172a;
-      --gray-slate: #1e293b;
       --text-muted: #64748b;
       --bg: #f8fafc;
       --white: #ffffff;
-      --shadow-premium: 0 20px 25px -5px rgba(0, 0, 0, 0.05), 0 10px 10px -5px rgba(0, 0, 0, 0.02);
-      --glass: rgba(255, 255, 255, 0.85);
+      --shadow: 0 10px 25px -5px rgba(0,0,0,0.05), 0 8px 10px -6px rgba(0,0,0,0.01);
     }
 
     * {
@@ -33,30 +32,37 @@
       background-color: var(--bg);
       color: var(--dark);
       line-height: 1.6;
-      overflow-x: hidden;
     }
 
-    /* Navbar */
-    .navbar {
+    /* Header & Navigation Fixes */
+    header {
       position: sticky;
       top: 0;
-      z-index: 100;
-      background: var(--glass);
-      backdrop-filter: blur(12px);
-      border-bottom: 1px solid rgba(226, 232, 240, 0.8);
-      padding: 16px 24px;
+      z-index: 1000;
+      background: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid #e2e8f0;
+      padding: 12px 20px;
+    }
+
+    .nav-container {
+      max-width: 1100px;
+      margin: 0 auto;
       display: flex;
       justify-content: space-between;
       align-items: center;
+      flex-wrap: wrap;
+      gap: 10px;
     }
 
     .brand {
-      font-size: 24px;
+      font-size: 22px;
       font-weight: 900;
       color: var(--primary);
       display: flex;
       align-items: center;
-      gap: 8px;
+      gap: 6px;
+      text-decoration: none;
     }
 
     .brand span {
@@ -65,15 +71,16 @@
 
     .nav-links {
       display: flex;
-      gap: 24px;
+      gap: 15px;
       list-style: none;
+      flex-wrap: wrap;
     }
 
     .nav-links a {
       text-decoration: none;
-      color: var(--gray-slate);
+      color: var(--dark);
       font-weight: 700;
-      font-size: 15px;
+      font-size: 14px;
       transition: color 0.3s;
     }
 
@@ -85,145 +92,132 @@
     .hero {
       background: linear-gradient(135deg, #0f172a 0%, #064e3b 100%);
       color: var(--white);
-      padding: 90px 20px;
+      padding: 60px 20px;
       text-align: center;
-      position: relative;
     }
 
     .hero h1 {
-      font-size: 48px;
+      font-size: 32px;
       font-weight: 900;
-      margin-bottom: 16px;
-      letter-spacing: -0.5px;
+      margin-bottom: 12px;
+      line-height: 1.3;
     }
 
     .hero p {
-      font-size: 20px;
+      font-size: 16px;
       color: #a7f3d0;
-      max-width: 650px;
-      margin: 0 auto 32px;
-      font-weight: 500;
+      max-width: 600px;
+      margin: 0 auto 24px;
     }
 
     .hero-btn {
       display: inline-block;
       background: var(--primary);
       color: var(--white);
-      padding: 14px 36px;
+      padding: 12px 30px;
       border-radius: 50px;
       font-weight: 800;
-      font-size: 16px;
+      font-size: 15px;
       text-decoration: none;
-      box-shadow: 0 10px 20px rgba(5, 150, 105, 0.3);
-      transition: all 0.3s ease;
+      box-shadow: 0 4px 15px rgba(5, 150, 105, 0.4);
     }
 
-    .hero-btn:hover {
-      transform: translateY(-3px);
-      background: #10b981;
-      box-shadow: 0 15px 25px rgba(5, 150, 105, 0.4);
-    }
-
-    /* Features Section */
+    /* Sections */
     .container {
       max-width: 1100px;
       margin: 0 auto;
-      padding: 80px 20px;
+      padding: 50px 20px;
     }
 
     .section-title {
       text-align: center;
-      margin-bottom: 50px;
+      margin-bottom: 35px;
     }
 
     .section-title h2 {
-      font-size: 32px;
+      font-size: 26px;
       font-weight: 800;
       color: var(--dark);
     }
 
     .section-title p {
       color: var(--text-muted);
-      font-size: 16px;
-      margin-top: 8px;
+      font-size: 14px;
+      margin-top: 6px;
     }
 
+    /* Grid & Cards */
     .grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      gap: 30px;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 20px;
     }
 
     .card {
       background: var(--white);
-      padding: 35px 25px;
+      padding: 25px 20px;
       border-radius: 16px;
-      box-shadow: var(--shadow-premium);
+      box-shadow: var(--shadow);
       border: 1px solid #f1f5f9;
-      transition: all 0.3s ease;
-    }
-
-    .card:hover {
-      transform: translateY(-8px);
-      border-color: var(--primary-light);
+      text-align: right;
     }
 
     .card-icon {
-      width: 55px;
-      height: 55px;
+      width: 48px;
+      height: 48px;
       background: var(--primary-light);
       color: var(--primary);
       border-radius: 12px;
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 24px;
-      font-weight: bold;
-      margin-bottom: 20px;
+      font-size: 22px;
+      margin-bottom: 15px;
     }
 
     .card h3 {
-      font-size: 20px;
+      font-size: 18px;
       font-weight: 800;
-      margin-bottom: 12px;
+      margin-bottom: 10px;
+      color: var(--dark);
     }
 
     .card p {
       color: var(--text-muted);
-      font-size: 15px;
+      font-size: 14px;
+      line-height: 1.6;
     }
 
-    /* Support Section */
-    .support-section {
+    /* Support Form Section */
+    .support-box {
       background: var(--white);
-      border-radius: 24px;
-      box-shadow: var(--shadow-premium);
+      border-radius: 20px;
+      box-shadow: var(--shadow);
       border: 1px solid #e2e8f0;
-      padding: 50px 40px;
-      max-width: 750px;
+      padding: 30px 20px;
+      max-width: 600px;
       margin: 0 auto;
     }
 
     .form-group {
-      margin-bottom: 20px;
+      margin-bottom: 18px;
     }
 
     .form-group label {
       display: block;
       font-weight: 700;
       font-size: 14px;
-      margin-bottom: 8px;
-      color: var(--gray-slate);
+      margin-bottom: 6px;
+      color: var(--dark);
     }
 
     .form-group input,
     .form-group textarea {
       width: 100%;
-      padding: 14px 16px;
+      padding: 12px;
       border: 1.5px solid #cbd5e1;
-      border-radius: 10px;
-      font-size: 15px;
-      transition: all 0.3s ease;
+      border-radius: 8px;
+      font-size: 14px;
       outline: none;
       background: #f8fafc;
     }
@@ -232,97 +226,91 @@
     .form-group textarea:focus {
       border-color: var(--primary);
       background: var(--white);
-      box-shadow: 0 0 0 4px rgba(5, 150, 105, 0.1);
     }
 
     .submit-btn {
       width: 100%;
       background: var(--primary);
       color: var(--white);
-      padding: 16px;
+      padding: 14px;
       border: none;
-      border-radius: 10px;
-      font-size: 16px;
+      border-radius: 8px;
+      font-size: 15px;
       font-weight: 800;
       cursor: pointer;
-      transition: all 0.3s ease;
-    }
-
-    .submit-btn:hover {
-      background: var(--primary-hover);
-      box-shadow: 0 8px 15px rgba(5, 150, 105, 0.25);
     }
 
     footer {
       text-align: center;
-      padding: 30px;
+      padding: 25px 20px;
       border-top: 1px solid #e2e8f0;
       color: var(--text-muted);
-      font-size: 14px;
-      font-weight: 500;
+      font-size: 13px;
       background: var(--white);
-    }
-
-    @media (max-width: 768px) {
-      .hero h1 { font-size: 34px; }
-      .hero p { font-size: 16px; }
-      .support-section { padding: 30px 20px; }
     }
   </style>
 </head>
 <body>
 
-  <!-- Navbar -->
-  <nav class="navbar">
-    <div class="brand">🌱 نَماء <span>الرقمية</span></div>
-    <ul class="nav-links">
-      <li><a href="#about">عن المنصة</a></li>
-      <li><a href="#services">الخدمات</a></li>
-      <li><a href="#support">الدعم الفني</a></li>
-    </ul>
-  </nav>
+  <!-- Navigation -->
+  <header>
+    <div class="nav-container">
+      <a href="#" class="brand">🌱 منصة <span>نَماء</span></a>
+      <ul class="nav-links">
+        <li><a href="#lang">اللغة والبيان</a></li>
+        <li><a href="#study">الدراسة والتطوير</a></li>
+        <li><a href="#faith">قبس الإيمان</a></li>
+        <li><a href="#support">الدعم الفني</a></li>
+      </ul>
+    </div>
+  </header>
 
   <!-- Hero Section -->
   <section class="hero">
-    <h1>مستقبل الخدمات الرقمية بين يديك</h1>
-    <p>منصة نَماء تمنحك الأداء العالي، السرعة، والسهولة المطلقة في التواصل وإدارة جميع خدماتك التقنية.</p>
-    <a href="#support" class="hero-btn">تواصل معنا الآن</a>
+    <h1>منصة نَماء المتكاملة</h1>
+    <p>وجهتك الشاملة لتعلم اللغة، التفوق الدراسي، وتزكية الروح بقبس الإيمان.</p>
+    <a href="#support" class="hero-btn">تواصل معنا</a>
   </section>
 
-  <!-- Features -->
-  <section class="container" id="services">
+  <!-- Main Sections -->
+  <section class="container" id="lang">
     <div class="section-title">
-      <h2>لماذا تختار منصة نَماء؟</h2>
-      <p>نقدم لك تجربة استثنائية متكاملة مصممة لأجلك</p>
+      <h2>أقسام المنصة الرئيسية</h2>
+      <p>محتوى مصمم بعناية ليغطي كافة تطلعاتك التعليمية والروحية</p>
     </div>
 
     <div class="grid">
+      <!-- اللغة -->
       <div class="card">
-        <div class="card-icon">⚡</div>
-        <h3>سرعة فائقة</h3>
-        <p>نضمن معالجة جميع الطلبات والرسائل بأعلى كفاءة وسرعة استجابة متطورة.</p>
+        <div class="card-icon">📚</div>
+        <h3>اللغة والبيان</h3>
+        <p>تطوير مهارات اللغة العربية، بلاغة الحديث، وقواعد الكتابة والتعليم اللغوي بأسلوب حديث وميسر.</p>
       </div>
-      <div class="card">
-        <div class="card-icon">🛡️</div>
-        <h3>أمان وحماية</h3>
-        <p>بياناتك واستفساراتك في أمان تام ومحفوظة باستخدام أحدث تقنيات التشفير.</p>
+
+      <!-- الدراسة -->
+      <div class="card" id="study">
+        <div class="card-icon">🎓</div>
+        <h3>الدراسة والتعليم</h3>
+        <p>مسارات تعليمية متقدمة، ملخصات دراسية، ودعم أكاديمي لمساعدتك على تحقيق أفضل النتائج.</p>
       </div>
-      <div class="card">
-        <div class="card-icon">💬</div>
-        <h3>دعم متواصل</h3>
-        <p>فريقنا التقني متواجد لمساعدتك والإجابة على كل التساؤلات بكل احترافية.</p>
+
+      <!-- قبس الإيمان -->
+      <div class="card" id="faith">
+        <div class="card-icon">✨</div>
+        <h3>قبس الإيمان</h3>
+        <p>جرعات إيمانية يومية، تدبر القرآن الكريم، وتزكية النفس لبناء شخصية متوازنة وواعية.</p>
       </div>
     </div>
   </section>
 
-  <!-- Support Form Section -->
+  <!-- Support Section -->
   <section class="container" id="support">
     <div class="section-title">
-      <h2>مركز الدعم الفني المباشر</h2>
-      <p>يسعدنا تلقي استفساراتك وملاحظاتك، يسعدنا التواصل معك في أي وقت</p>
+      <h2>مركز الدعم والاتصال</h2>
+      <p>هل لديك استفسار أو تود التواصل معنا؟ يسعدنا استقبال رسالتك</p>
     </div>
 
-    <div class="support-section">
+    <div class="support-box">
       <div class="form-group">
         <label for="suppName">الاسم الكامل</label>
         <input type="text" id="suppName" placeholder="أدخل اسمك الكريم" />
@@ -334,16 +322,16 @@
       </div>
 
       <div class="form-group">
-        <label for="suppMsg">تفاصيل المشكلة أو الاستفسار</label>
-        <textarea id="suppMsg" rows="4" placeholder="اكتب رسالتك بالتفصيل هنا..."></textarea>
+        <label for="suppMsg">تفاصيل الرسالة</label>
+        <textarea id="suppMsg" rows="4" placeholder="اكتب استفسارك هنا..."></textarea>
       </div>
 
-      <button type="button" class="submit-btn" onclick="handleSupportSubmit()">إرسال الرسالة الآن</button>
+      <button type="button" class="submit-btn" onclick="handleSupportSubmit()">إرسال الرسالة</button>
     </div>
   </section>
 
   <footer>
-    <p>جميع الحقوق محفوظة © منصة نَماء الرقمية 2026</p>
+    <p>جميع الحقوق محفوظة © منصة نَماء 2026</p>
   </footer>
 
   <!-- Firebase Script Integration -->
@@ -360,7 +348,7 @@
           createdAt: serverTimestamp(),
           status: "new"
         });
-        alert("✨ تم إرسال رسالتك بنجاح! سيتواصل معك فريق الدعم قريباً.");
+        alert("تم إرسال رسالتك بنجاح! سيتواصل معك الفريق قريباً.");
         
         document.getElementById('suppName').value = '';
         document.getElementById('suppEmail').value = '';
@@ -381,7 +369,7 @@
       const msg = document.getElementById('suppMsg').value.trim();
 
       if(!name || !email || !msg) {
-        alert("يرجى تعبئة جميع الحقول المطلوبة قبل الإرسال.");
+        alert("يرجى تعبئة جميع الحقول قبل الإرسال.");
         return;
       }
 
